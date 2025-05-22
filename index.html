@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giro Sabratto - Heladería Artesanal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Fredoka+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --cream: #F7F4E3;
+      --light-yellow: #FDE67F;
+      --yellow: #FDED91;
+      --gold: #F4B021;
+      --brown: #7B453B;
+      --light-purple: #BFB1D5;
+      --purple: #6B4493;
+      --dark-purple: #5A368A;
+      --deep-purple: #3F2677;
+      --pink: #D05B9E;
+      --red-pink: #D84B6B;
+      --olive: #7A8425;
+    }
+    
+    body {
+      background: var(--cream);
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      color: var(--brown);
+      background-image: radial-gradient(circle at 10% 20%, rgba(253, 237, 145, 0.1) 0%, rgba(253, 230, 127, 0.1) 90%);
+    }
+
+    .card {
+      background: white;
+      border-radius: 30px;
+      box-shadow: 0 10px 30px rgba(123, 69, 59, 0.15);
+      padding: 40px 0px 0px 0px;
+      max-width: 520px;
+      width: 100%;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border: 3px dashed var(--light-yellow);
+      background-image: 
+        radial-gradient(circle at 80% 10%, rgba(253, 237, 145, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 20% 90%, rgba(208, 91, 158, 0.1) 0%, transparent 20%);
+    }
+
+    .mainContenedor {
+      padding: 0px 40px 0px 40px;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 30px;
+      background: var(--dark-purple);
+    }
+
+    /* Logo modificado */
+    .logo-container {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .logo {
+      width: 200px; /* Tamaño aumentado */
+      height: auto;
+    }
+
+    h1 {
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.2rem;
+      margin: 15px 0 0;
+      color: var(--deep-purple);
+      font-weight: 400;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 0px rgba(253, 237, 145, 0.4);
+      position: relative;
+      display: inline-block;
+    }
+
+    h1::after {
+      content: '❋❋❋';
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      right: 0;
+      color: var(--gold);
+      font-size: 1rem;
+      letter-spacing: 5px;
+    }
+
+    .title {
+      margin: 25px 0 20px;
+      font-size: 1.2rem;
+      color: var(--gold);
+      font-weight: 600;
+      position: relative;
+      display: inline-block;
+      background: linear-gradient(to right, var(--light-purple), var(--yellow));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      padding: 0 10px;
+    }
+
+    .title::before, .title::after {
+      content: '🍦';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .title::before {
+      left: -25px;
+    }
+
+    .title::after {
+      right: -25px;
+    }
+
+    .info {
+      font-size: 0.95rem;
+      margin: 15px 0;
+      color: var(--brown);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      padding: 8px 0;
+    }
+
+    .info::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 25%;
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--light-purple), transparent);
+    }
+
+    .info i {
+      color: var(--pink);
+      width: 20px;
+      font-size: 1.1rem;
+    }
+
+    .address-link {
+      color: var(--deep-purple);
+      text-decoration: none;
+      transition: all 0.3s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-weight: 500;
+      position: relative;
+    }
+
+    .address-link:hover {
+      color: var(--pink);
+      text-decoration: none;
+    }
+
+    .address-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    .address-link:hover::after {
+      width: 100%;
+    }
+
+    .address-link i {
+      font-size: 0.8rem;
+      color: var(--red-pink);
+    }
+
+    .menu-btn {
+      display: inline-block;
+      margin: 25px 0;
+      padding: 14px 35px;
+      background: linear-gradient(45deg, var(--red-pink), var(--pink));
+      color: white;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.4s ease;
+      box-shadow: 
+        0 5px 15px rgba(216, 75, 107, 0.3),
+        0 2px 0 var(--gold);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .menu-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, var(--pink), var(--red-pink));
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: -1;
+    }
+
+    .menu-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        0 8px 25px rgba(216, 75, 107, 0.4),
+        0 3px 0 var(--gold);
+    }
+
+    .menu-btn:hover::before {
+      opacity: 1;
+    }
+
+    .menu-btn i {
+      margin-right: 10px;
+    }
+
+    .review {
+      margin-top: 25px;
+      padding: 25px;
+      background: rgba(191, 177, 213, 0.15);
+      border-radius: 20px;
+      font-size: 0.95rem;
+      color: var(--brown);
+      border: 2px dotted var(--light-purple);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .review::before {
+      content: '✨';
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      font-size: 1.2rem;
+      opacity: 0.3;
+    }
+
+    .review::after {
+      content: '✨';
+      position: absolute;
+      bottom: 5px;
+      right: 10px;
+      font-size: 1.2rem;
+      opacity: 0.3;
+    }
+
+    .review a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 12px 28px;
+      background: linear-gradient(45deg, var(--purple), var(--dark-purple));
+      color: #fff;
+      text-decoration: none;
+      border-radius: 50px;
+      transition: all 0.4s ease;
+      font-weight: 500;
+      box-shadow: 0 4px 12px rgba(107, 68, 147, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .review a:hover {
+      background: linear-gradient(45deg, var(--dark-purple), var(--purple));
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 18px rgba(107, 68, 147, 0.4);
+    }
+
+    .review a::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        to bottom right,
+        rgba(255,255,255,0) 45%,
+        rgba(255,255,255,0.3) 50%,
+        rgba(255,255,255,0) 55%
+      );
+      transform: rotate(30deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(30deg); }
+      100% { transform: translateX(100%) rotate(30deg); }
+    }
+
+    .networks {
+      margin-top: 30px;
+      font-size: 1rem;
+      color: var(--brown);
+      position: relative;
+    }
+
+    .networks::before {
+      content: '';
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, var(--light-purple), transparent);
+    }
+
+    .networks a {
+      color: var(--purple);
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+
+    .networks a:hover {
+      color: var(--red-pink);
+      transform: translateY(-3px);
+      text-decoration: none;
+    }
+
+    .networks i {
+      margin-right: 5px;
+    }
+
+    .icecream-icon {
+      position: absolute;
+      z-index: 0;
+      color: var(--pink);
+      opacity: 0.15;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .icecream-1 {
+      top: 30px;
+      left: 30px;
+      font-size: 3rem;
+      animation-delay: 0s;
+    }
+
+    .icecream-2 {
+      bottom: 30px;
+      right: 30px;
+      font-size: 3rem;
+      animation-delay: 1s;
+    }
+
+    .icecream-3 {
+      top: 40%;
+      left: 10px;
+      font-size: 2.5rem;
+      animation-delay: 2s;
+    }
+
+    .icecream-4 {
+      top: 60%;
+      right: 20px;
+      font-size: 2rem;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    .sprinkles {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .sprinkle {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      opacity: 0.6;
+    }   
+
+    /* Franja inferior como div */
+    .footer-band {
+      width: 100%;
+      height: 50px;
+      background: white;
+      border-radius: 0 0 30px 30px;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 500;
+      font-size: 0.9rem;
+      box-shadow: 0 10px 30px rgba(123, 69, 59, 0.15);
+      margin-top: 35px;
+    }
+
+    .footer-band {
+      font-size: 0.8rem;
+    }
+
+    .banner-container {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        margin-top: 35px;
+    }
+
+    .center-image {
+      width: 420px;
+      height: auto;
+    }
+
+    @media (max-width: 480px) {
+      .center-image {
+        width: 350px;
+        height: auto;
+      }
+    }
+
+    .black-banner {
+        width: 100%;
+        height: 50px;
+        background-color: white;
+        background-image: url('background-origen.png');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+    }
+
+    .banner-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 86px;
+        object-fit: cover;
+        z-index: 1;
+    }
+
+    .banner-link {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        transition: transform 0.3s ease;
+    }
+
+    .banner-link:hover {
+        transform: translate(-50%, -50%) scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="mainContenedor">
+      <div class="sprinkles" id="sprinkles"></div>
+    
+      <i class="fas fa-ice-cream icecream-icon icecream-1"></i>
+      <i class="fas fa-ice-cream icecream-icon icecream-2"></i>
+      <i class="fas fa-candy-cane icecream-icon icecream-3"></i>
+      <i class="fas fa-stroopwafel icecream-icon icecream-4"></i>
+      
+      <div class="logo-container">
+        <img src="logo-transparent.png" alt="Logo Giro Sabratto" class="logo" />
+      </div>
+      <p class="title">Te ofrecemos helado de yogurt o de vainilla, con los toppings que elijas, salsas deliciosas, y opciones fit.</p>
+
+      <p class="info"><i class="fas fa-map-marker-alt"></i> 
+        <a href="https://www.google.com/maps/place/Centro+Comercial+La+Plazuela,+Cartagena" target="_blank" class="address-link">
+          La Olímpica en Plaza 90 – Turbaco. 
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </p>
+      <p class="info"><i class="fas fa-phone-alt"></i> +57 322 517 1099</p>
+      <p class="info"><i class="fas fa-envelope"></i> info@girosabratto.com</p>
+      
+      <a href="https://girosabratto.com/carta" target="_blank" class="menu-btn">
+        <i class="fas fa-book-open"></i> Ver Nuestra Carta
+      </a>
+
+      <div class="review">
+        <p>Cuéntale al mundo lo rico que estuvo tu helado 🍦Escribe aquí tu reseña</p>
+        <a href="https://maps.app.goo.gl/8x8k9gDVABZetL158" target="_blank"><i class="fas fa-star"></i> Escribir reseña</a>
+      </div>
+
+      <div class="networks">
+        <p>Síguenos para ser el primero en conocer nuestros nuevos sabores y promos:</p>
+        <a href="https://instagram.com/girosabratto" target="_blank"><i class="fab fa-instagram"></i> Instagram</a> | 
+        <a href="https://facebook.com/girosabratto" target="_blank"><i class="fab fa-facebook-f"></i> Facebook</a> |
+        <a href="https://tiktok.com/@girosabratto" target="_blank"><i class="fab fa-tiktok"></i> TikTok</a>
+      </div>
+    </div>
+
+    <!-- Franja inferior como div independiente -->
+    <div class="footer-band">
+      <div class="banner-container">
+            <div class="black-banner">
+                <a href="https://www.SomosOrigen.com" class="banner-link" target="_blank">
+                    <img src="origen-link.png" alt="Logo centrado" class="center-image">
+                </a>
+            </div>
+        </div>
+    </div>
+  </div>
+
+  <script>
+    // Crear sprinkles decorativos
+    const sprinklesContainer = document.getElementById('sprinkles');
+    const colors = ['#FDE67F', '#FDED91', '#F4B021', '#D05B9E', '#D84B6B', '#6B4493', '#5A368A'];
+    
+    for (let i = 0; i < 30; i++) {
+      const sprinkle = document.createElement('div');
+      sprinkle.className = 'sprinkle';
+      sprinkle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      sprinkle.style.left = `${Math.random() * 100}%`;
+      sprinkle.style.top = `${Math.random() * 100}%`;
+      sprinkle.style.transform = `rotate(${Math.random() * 360}deg) scale(${Math.random() * 0.5 + 0.5})`;
+      sprinkle.style.animation = `float ${Math.random() * 4 + 3}s ease-in-out infinite ${Math.random() * 2}s`;
+      sprinklesContainer.appendChild(sprinkle);
+    }
+  </script>
+</body>
+</html>
